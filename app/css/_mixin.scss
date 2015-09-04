@@ -1,0 +1,16 @@
+$breakpoint-tablet: 768px;
+$breakpoint-phone: 480px;
+
+
+@mixin mq($canvas) {
+	@if $canvas == tablet {
+		@media all and (max-width: $breakpoint-tablet) {
+		@content;
+		}
+	}
+	@else if $canvas == phone {
+		@media all and (max-width: $breakpoint-phone) {
+		@content;
+		}
+	}
+}

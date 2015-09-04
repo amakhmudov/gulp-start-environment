@@ -1,0 +1,22 @@
+body {
+  color: #000;
+  background: #eee;
+}
+
+@media all and (max-width: 768px) {
+  body {
+    background: #0f0;
+  }
+}
+
+.container {
+  width: 980px;
+  margin: 0 auto;
+  border: 1px solid #eee;
+}
+
+@media all and (max-width: 768px) {
+  .container {
+    border: 1px solid #f00;
+  }
+}

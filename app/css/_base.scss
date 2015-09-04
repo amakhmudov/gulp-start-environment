@@ -1,0 +1,179 @@
+*{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.transition{
+	-webkit-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+.pos-r{
+	position: relative;
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+.tal-left{
+	text-align: left;
+}
+.tal-center{
+	text-align: center;
+}
+.tal-right{
+	text-align: right;
+}
+.tt-uppc{
+	text-transform: uppercase;
+}
+.bd-none{
+	border: none;
+}
+.list-clear{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+
+	li{
+		margin: 0;
+
+		&:before,
+		&:after{
+			width: 0;
+			height: 0;
+			font-size: 0;
+		}
+	}
+}
+.list-table{
+	@extend .list-clear;
+
+	li{
+		padding: 0 0 10px;
+		margin: 0 0 10px;
+		line-height: 1.69em;
+		border-bottom: 1px solid $grey-color;
+
+		&:last-child{
+			@extend .bd-none;
+		}
+	}
+}
+.bd{
+	border: 1px solid #f00;
+}
+.tiles-content{
+	display: table;
+	width: 100%;
+
+	.tiles{
+		display: table-cell;
+	}
+}
+.val-top{
+	vertical-align: top;
+}
+.val-middle{
+	vertical-align: middle;
+}
+.val-bottom{
+	vertical-align: bottom;
+}
+.ir {
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+}
+.d-ib{
+	display: inline-block;
+}
+.media-info{
+	overflow: hidden;
+
+	&.media-left{
+		.media{
+			@extend .left;
+			margin: 0 1em 0 0;
+
+			@include mq(phone){
+				float: none;
+			}
+		}
+	}
+
+	&.media-right{
+		.media{
+			@extend .right;
+			margin: 0 0 0 1em;
+
+			@include mq(phone){
+				float: none;
+			}
+		}
+	}
+	.info{
+		overflow: hidden;
+	}
+}
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+.row{
+	margin-left: -20px;
+	margin-right: -20px;
+	padding: 0 0 0 20px;
+	@extend .clearfix;
+}
+.col{
+	padding: 0 20px 0 0;
+	min-height: 1px;
+	@extend .left;
+
+	&:last-child{
+		@extend .right;
+	}
+}
+html{
+	font-size: 16px;
+}
+body{
+	color: $base-color;
+}
+h1, h2, h3, h4, h5, h6{
+	font-weight: 400;
+}
+p{
+	margin: 0 0 1rem;
+}
+ul{
+	@extend .list-clear;
+
+	li{
+		padding: 0 0 0 1rem;
+		line-height: 1.69em;
+	}
+}
+a{}
+img {
+    width: auto;
+    max-width: 100%;
+    height: auto !important;
+}
+.wrapper{
+	width: 100%;
+	padding: 0 20px;
+	max-width: 980px;
+	margin: 0 auto;
+
+	@extend .clearfix;
+}
