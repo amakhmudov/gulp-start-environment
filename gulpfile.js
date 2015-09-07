@@ -8,6 +8,8 @@ var gulp = require('gulp'),
 	cmq = require('gulp-combine-media-queries'),
 	uglify = require('gulp-uglify'),
 	minifycss = require('gulp-minify-css'),
+	imagemin = require('gulp-imagemin'),
+	pngquant = require('imagemin-pngquant'),
 	livereload = require('gulp-livereload');
 
 
@@ -20,6 +22,17 @@ var gulp = require('gulp'),
 	   .pipe(gulp.dest('app/'));
 	});
 
+// Image Optimization
+	gulp.task('imagemin', function() {
+    gulp.src('app/img/**/*')
+	    .pipe(imagemin({
+				progressive: true,
+	            svgoPlugins: [{removeViewBox: false}],
+	            use: [pngquant()]
+	}))
+	    .pipe(gulp.dest('app/build/img'));
+	});
+
 // Clean
 	gulp.task('clean', function () {
 
@@ -28,12 +41,13 @@ var gulp = require('gulp'),
 	});
 
 // Build
-	gulp.task('build', ['clean'], function () {
+	gulp.task('build', ['clean', 'imagemin'], function () {
 		var assets = useref.assets();
 
 	gulp.src('app/*.html')
 	   .pipe(assets)
 	   .pipe(gulpif('*.js', uglify()))
+	   .pipe(gulpif('*.css', cmq()))
 	   .pipe(gulpif('*.css', minifycss()))
 	   .pipe(assets.restore())
 	   .pipe(useref())
