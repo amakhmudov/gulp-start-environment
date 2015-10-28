@@ -4,8 +4,8 @@
 	box-sizing: border-box;
 }
 .transition{
-	-webkit-transition: all 0.3s ease-out;
-	transition: all 0.3s ease-out;
+	-webkit-transition: all 0.25s ease-out;
+	transition: all 0.25s ease-out;
 }
 .pos-r{
 	position: relative;
@@ -35,31 +35,10 @@
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
-
-	li{
-		margin: 0;
-
-		&:before,
-		&:after{
-			width: 0;
-			height: 0;
-			font-size: 0;
-		}
-	}
 }
-.list-table{
-	@extend .list-clear;
-
-	li{
-		padding: 0 0 10px;
-		margin: 0 0 10px;
-		line-height: 1.69em;
-		border-bottom: 1px solid $grey-color;
-
-		&:last-child{
-			@extend .bd-none;
-		}
-	}
+.fs-clear{
+	font-size: 0;
+	line-height: 0;
 }
 .bd{
 	border: 1px solid #f00;
@@ -70,6 +49,17 @@
 
 	.tiles{
 		display: table-cell;
+		vertical-align: top;
+
+		&.val-top{
+			vertical-align: top;
+		}
+		&.val-middle{
+			vertical-align: middle;
+		}
+		&.val-bottom{
+			vertical-align: bottom;
+		}
 	}
 }
 .val-top{
@@ -82,9 +72,12 @@
 	vertical-align: bottom;
 }
 .ir {
-  font: 0/0 a;
-  text-shadow: none;
-  color: transparent;
+	text-indent: 120%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.d-b{
+	display: block;
 }
 .d-ib{
 	display: inline-block;
@@ -128,40 +121,45 @@
 .clearfix {
     *zoom: 1;
 }
-.row{
-	margin-left: -20px;
-	margin-right: -20px;
-	padding: 0 0 0 20px;
-	@extend .clearfix;
+.s-spr{
+	background: url(../img/s-spr.png) -100% -100%  no-repeat;
 }
-.col{
-	padding: 0 20px 0 0;
-	min-height: 1px;
-	@extend .left;
+.responsive-tablet{
+	float: left;
+	display: none;
 
-	&:last-child{
-		@extend .right;
+	@include mq(tablet){
+	    float: none;
 	}
 }
+
+.responsive-phone{
+	float: left;
+	display: none;
+
+	@include mq(tablet){
+	    float: none;
+	}
+}
+
+.w-100p{
+	width: 100%;
+}
+
 html{
 	font-size: 16px;
 }
 body{
-	color: $base-color;
+
 }
 h1, h2, h3, h4, h5, h6{
-	font-weight: 400;
+	font-weight: normal;
 }
 p{
 	margin: 0 0 1rem;
 }
 ul{
 	@extend .list-clear;
-
-	li{
-		padding: 0 0 0 1rem;
-		line-height: 1.69em;
-	}
 }
 a{}
 img {
@@ -169,11 +167,8 @@ img {
     max-width: 100%;
     height: auto !important;
 }
-.wrapper{
-	width: 100%;
-	padding: 0 20px;
-	max-width: 980px;
-	margin: 0 auto;
-
-	@extend .clearfix;
+input,
+textarea,
+button{
+	outline: none;
 }
