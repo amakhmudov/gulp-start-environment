@@ -76,7 +76,6 @@ var gulp = require('gulp'),
 		.pipe(plumber())
 		.pipe(sass({outputStyle: 'compact'})) 		// expanded, compact, compressed options available
 		.pipe(gulp.dest('app/css/'))
-		// .pipe(cmq())                             // collect and merge media queries into one category
 		.pipe(livereload());
 	});
 
@@ -87,7 +86,7 @@ var gulp = require('gulp'),
 	    var server = livereload();
 
 		gulp.watch('bower.json', ['bower', 'sass']);
-		// gulp.watch('app/css/*.scss', ['sass']);
+		gulp.watch('app/css/*.scss', ['sass']);
 	})
 
 
