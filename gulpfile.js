@@ -18,10 +18,8 @@ var gulp = require('gulp'),
 // Bower
 	gulp.task('bower', function () {
 	gulp.src('app/index.html')
-	   .pipe(wiredep({
-		   	directory: "bower_components"
-		}))
-	   .pipe(gulp.dest('app/'));
+		.pipe(wiredep({directory: "bower_components"}))
+		.pipe(gulp.dest('app/'));
 	});
 
 
@@ -30,9 +28,9 @@ var gulp = require('gulp'),
 	gulp.task('imagemin', function() {
     gulp.src('app/img/**/*')
 	    .pipe(imagemin({
-				progressive: true,
-	            svgoPlugins: [{removeViewBox: false}],
-	            use: [pngquant()]
+			progressive: true,
+	        svgoPlugins: [{removeViewBox: false}],
+	        use: [pngquant()]
 	}))
 	    .pipe(gulp.dest('app/build/img'));
 	});
@@ -41,20 +39,17 @@ var gulp = require('gulp'),
 
 	// Merge media queries
 	gulp.task('mmq', function () {
-		gulp.src('app/**/*.css')
-		.pipe(mmq({
-		  log: true
-		}))
+	gulp.src('app/**/*.css')
+		.pipe(mmq({log: true}))
 		.pipe(gulp.dest('app/**/*.css'));
-		});
+	});
 
 
 
 // Clean
 	gulp.task('clean', function () {
-
 	gulp.src('app/build/*.*', {read: false})
-	   .pipe(clean());
+		.pipe(clean());
 	});
 
 
@@ -64,13 +59,13 @@ var gulp = require('gulp'),
 		var assets = useref.assets();
 
 	gulp.src('app/*.html')
-	   .pipe(assets)
-	   // .pipe(gulpif('*.js', uglify()))
-	   .pipe(gulpif('*.css', mmq()))
-	   // .pipe(gulpif('*.css', minifycss()))
-	   .pipe(assets.restore())
-	   .pipe(useref())
-	   .pipe(gulp.dest('app/build'));
+		.pipe(assets)
+		// .pipe(gulpif('*.js', uglify()))    		// turn on build version compilation
+		.pipe(gulpif('*.css', mmq()))
+		// .pipe(gulpif('*.css', minifycss()))		// turn on build version compilation
+		.pipe(assets.restore())
+		.pipe(useref())
+		.pipe(gulp.dest('app/build'));
 	});
 
 
@@ -79,10 +74,10 @@ var gulp = require('gulp'),
 	gulp.task('sass', function () {
 	gulp.src('app/css/*.scss')
 		.pipe(plumber())
-	   .pipe(sass({outputStyle: 'compact'})) // expanded, compact, compressed options available
-	   .pipe(gulp.dest('app/css/'))
-       // .pipe(cmq())
-	   .pipe(livereload());
+		.pipe(sass({outputStyle: 'compact'})) 		// expanded, compact, compressed options available
+		.pipe(gulp.dest('app/css/'))
+		// .pipe(cmq())                             // collect and merge media queries into one category
+		.pipe(livereload());
 	});
 
 
@@ -91,8 +86,8 @@ var gulp = require('gulp'),
 	gulp.task('watch', function () {
 	    var server = livereload();
 
-		gulp.watch('bower.json', ['bower']);
-		gulp.watch('app/css/*.scss', ['sass']);
+		gulp.watch('bower.json', ['bower', 'sass']);
+		// gulp.watch('app/css/*.scss', ['sass']);
 	})
 
 
