@@ -1,0 +1,22 @@
+$breakpoint-original: 1180px;
+$breakpoint-md: 992px;
+$breakpoint-sm: 768px;
+$breakpoint-xs: 480px;
+
+$base-font-size: 1rem;
+$base-line-height: 1.625em;
+
+$snow-col: #fff;
+$body-col: #3b3d40;
+$grey-col: lighten($body-col, 20%);
+
+$form-error-col: #f00;
+$form-success-col: #1d76b9;
+
+$link-col: #1d76b9;
+$finger: 30px;
+$border-radius: 4px;
+
+$base: 8px;
+$space: 24px;
+$gutter: $space/2;

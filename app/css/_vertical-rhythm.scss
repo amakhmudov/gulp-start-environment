@@ -1,0 +1,26 @@
+$start-number: 1;
+$end-number: 15;
+
+@for $i from $start-number through $end-number {
+    .mt-#{$i*10} {
+        margin-top: $i*10px;
+    }
+}
+
+@for $i from $start-number through $end-number {
+    .mb-#{$i*10} {
+        margin-bottom: $i*10px;
+    }
+}
+
+@for $i from $start-number through $end-number {
+    .pt-#{$i*10} {
+        padding-top: $i*10px;
+    }
+}
+
+@for $i from $start-number through $end-number {
+    .pb-#{$i*10} {
+        padding-bottom: $i*10px;
+    }
+}

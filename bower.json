@@ -1,16 +1,14 @@
 {
-  "name": "gulp-www-ready",
+  "name": "Web",
   "version": "0.0.1",
-  "description": "gulp-www-ready",
+  "description": "Web Environment",
   "main": "index.html",
   "authors": [
     "Alisher Makhmudov"
   ],
   "license": "MIT",
   "dependencies": {
-    "bootstrap": "~3.3.6",
-    "jquery": "~2.1.4",
-    "normalize-css": "~3.0.3"
+
   },
   "devDependencies": {}
 }
